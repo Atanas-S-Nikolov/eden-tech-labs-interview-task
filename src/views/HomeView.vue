@@ -1,13 +1,12 @@
-<script setup lang="ts">
-  
-</script>
-
 <template>
   <main>
-    <img src="../assets/earth-icon.svg" alt="Earth"/>
+    <section class="images_section">
+      <img id="planets" src="../assets/planets.svg" alt="Planets"/>
+      <img id="earth" src="../assets/earth-icon.svg" alt="Earth"/>
+    </section>
     <section class="title_section">
-      <h1>Earth App</h1>
-      <h2>View Earth images every day.</h2>
+      <h1>Astronomy App</h1>
+      <h2>View Astronomy images every day.</h2>
     </section>
   </main>
 </template>
@@ -19,7 +18,12 @@
     justify-content: space-evenly;
   }
 
-  img {
+  #planets {
+    width: 250px;
+    transform: translate(-25%, -75%);
+  }
+
+  #earth {
     width: 450px;
   }
 

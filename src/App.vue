@@ -5,7 +5,3 @@ import NavigationBar from '@/components/NavigationBar.vue';
 <template>
   <NavigationBar />
 </template>
-
-<style scoped>
-
-</style>

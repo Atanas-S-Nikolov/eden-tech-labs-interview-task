@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
   <header>
     <RouterLink class="logo_wrapper" to="/">
       <v-icon name="io-earth"/>
-      Earth App
+      Astronomy App
     </RouterLink>
     <nav>
       <RouterLink to="astronomy-picture-of-the-day">Astronomy picture of the day</RouterLink>
@@ -19,7 +19,7 @@
 
 <style scoped>
   header {
-    background-color: #01767d;
+    background-color: var(--main-color);
     display: flex;
     padding: 1em;
     margin-bottom: 2em;

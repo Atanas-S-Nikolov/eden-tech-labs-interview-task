@@ -1,3 +1,7 @@
+:root {
+  --main-color: #01767d;
+}
+
 body {
   margin: 0;
   font-size: large;

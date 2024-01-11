@@ -7,9 +7,9 @@ import App from './App.vue'
 import router from './router'
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { IoEarth } from "oh-vue-icons/icons";
+import { IoEarth, PrSpinner } from "oh-vue-icons/icons";
 
-addIcons(IoEarth);
+addIcons(IoEarth, PrSpinner);
 
 const app = createApp(App)
 
