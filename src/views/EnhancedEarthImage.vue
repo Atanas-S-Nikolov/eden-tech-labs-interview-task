@@ -37,17 +37,17 @@ useAxios<Array<NasaEpicEnhancedImage>>('/EPIC/api/enhanced', nasaRequest)
 </script>
 
 <template>
-  <section>
+  <main>
     <LoadSpinner v-if="isLoading" />
     <p v-if="isLoading">Loading...<br/> Please wait</p>
     <img v-if="isFinished" class="main_image" :src="imageSrc" alt="The most recent enhanced Earth image" />
     <p v-if="isFinished">{{ caption }}</p>
     <p v-if="isFinished"><b>Date:</b> {{ imgDate }}</p>
-  </section>
+  </main>
 </template>
 
 <style scoped>
-  section {
+  main {
     display: grid;
     place-items: center;
     text-align: center;
@@ -58,3 +58,4 @@ useAxios<Array<NasaEpicEnhancedImage>>('/EPIC/api/enhanced', nasaRequest)
     width: 750px;;
   }
 </style>
+@/appTypes/NasaEpicEnhancedImageResponse

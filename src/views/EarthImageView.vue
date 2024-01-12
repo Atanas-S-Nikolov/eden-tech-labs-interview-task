@@ -33,19 +33,19 @@ navigator.geolocation.getCurrentPosition(success, error);
 </script>
 
 <template>
-  <section>
+  <main>
     <LoadSpinner v-if="isLoading"/>
     <img v-if="isFinished" :src="imageSrc" alt="Current location Earth image"/>
-  </section>
+  </main>
 </template>
 
 <style scoped>
-  section {
+  main {
     display: grid;
     place-items: center;
   }
 
-  section img {
+  main img {
     width: 750px;
   }
 </style>

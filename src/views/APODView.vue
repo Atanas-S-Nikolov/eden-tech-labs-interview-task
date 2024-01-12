@@ -7,3 +7,12 @@ import PictureOfTheDay from '@/components/PictureOfTheDay.vue';
     <PictureOfTheDay />
   </main>
 </template>
+
+<style scoped>
+  main {
+    display: grid;
+    place-items: center;
+    text-align: justify;
+    padding: 0 15em;
+  }
+</style>
