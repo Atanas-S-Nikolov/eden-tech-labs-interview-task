@@ -5,8 +5,11 @@ import dayjs from 'dayjs';
 import { ref, computed, onUpdated } from 'vue';
 import { NASA_URL } from '@/utils/EndpointsUtils';
 import { type NasaAPOD } from '@/appTypes/NasaAPOD';
+import { isValidDate } from '@/utils/DateUtils';
+import DatePicker from './DatePicker.vue';
 
 const date = ref('');
+const hasDateError = ref(false);
 const url = computed(() => {
   const searchParams = new URLSearchParams({ api_key: import.meta.env.VITE_NASA_API_KEY });
   if (dayjs(date.value).isValid()) {
@@ -32,22 +35,22 @@ onUpdated(() => {
   explanation.value = responseData?.explanation || '';
 })
 function handleDateChange(event: Event) {
-  date.value = (event.target as HTMLInputElement).value;
+  hasDateError.value = false;
+  const value = (event.target as HTMLInputElement).value;
+  if (!isValidDate(value)) {
+    hasDateError.value = true;
+    return;
+  }
+  date.value = value;
 }
 </script>
 
 <template>
-  <label for="date_picker">Date:</label>
-  <input
-    type="date"
-    id="date_picker"
-    name="date-picker"
-    @change.prevent="handleDateChange"
-  />
+  <DatePicker v-model:hasError="hasDateError" @change="handleDateChange"/>
   <LoadSpinner v-if="isFetching"/>
-  <section class="heading_section">
-    <h2 v-if="isFinished" class="title">{{ title }}</h2>
-    <h3 v-if="isFinished" class="author">By {{ copyright }}</h3>
+  <section v-if="isFinished" class="heading_section">
+    <h2 class="title">{{ title }}</h2>
+    <h3 class="author">By {{ copyright }}</h3>
   </section>
   <img v-if="isFinished" :src="imageSrc" :alt="title"/>
   <p v-if="isFinished" class="explanation">{{ explanation }}</p>
