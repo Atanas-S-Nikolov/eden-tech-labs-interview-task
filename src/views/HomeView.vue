@@ -34,4 +34,27 @@
   .title_section h2 {
     color: gray;
   }
+
+  @media (max-width: 1350px) {
+    #planets {
+      width: 150px;
+      transform: translate(-25%, -100%);
+    }
+
+    #earth {
+      width: 350px;
+    }
+  }
+
+  @media (max-width: 950px) {
+    main {
+      flex-direction: column;
+      text-align: center;
+      font-size: medium;
+    }
+
+    #planets {
+      display: none;
+    }
+  }
 </style>
