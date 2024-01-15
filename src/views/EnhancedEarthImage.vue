@@ -90,4 +90,22 @@ function handleSelectChange(event: Event) {
   .main_image {
     width: 750px;;
   }
+
+  @media (max-width: 800px) {
+    main {
+      padding: 0 10%;
+    }
+  }
+
+  @media (max-width: 450px) {
+    main {
+      font-size: large;
+    }
+
+    #available_dates_select {
+      margin-bottom: 2em;
+      padding: .5em 1em;
+      font-size: medium;
+    }
+  }
 </style>

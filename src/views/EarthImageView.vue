@@ -141,4 +141,16 @@ onUnmounted(() => {
     z-index: 1;
     color: white;
   }
+
+  @media (max-width: 800px) {
+    main {
+      padding: 0 10%;
+    }
+  }
+
+  @media (max-width: 450px) {
+    p {
+      font-size: small;
+    }
+  }
 </style>

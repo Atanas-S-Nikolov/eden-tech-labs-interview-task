@@ -21,6 +21,6 @@ function handleChange(event: Event) {
 <style scoped>
   #error_message {
     color: red;
-    margin-top: 0;
+    margin: 0;
   }
 </style>

@@ -74,4 +74,14 @@ function handleDateChange(event: Event) {
   .explanation {
     font-size: larger;
   }
+
+  @media (max-width: 650px) {
+    .heading_section {
+      line-height: 1;
+    }
+
+    .heading_section, .explanation {
+      font-size: medium;
+    }
+  }
 </style>

@@ -46,7 +46,7 @@
     }
   }
 
-  @media (max-width: 950px) {
+  @media (max-width: 1010px) {
     main {
       flex-direction: column;
       text-align: center;

@@ -1,19 +1,43 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 
 const GI_HAMBURGER_MENU = 'gi-hamburger-menu'; 
-const IO_CLOSE = 'io-close'; 
-const menuIcon = ref(GI_HAMBURGER_MENU);
+const IO_CLOSE = 'io-close';
+const routes = [
+  {
+    id: 1,
+    name: 'Astronomy picture of the day',
+    to: 'astronomy-picture-of-the-day'
+  },
+  {
+    id: 2,
+    name: 'Current location image',
+    to: 'current-location'
+  },
+  {
+    id: 3,
+    name: 'The most recent enhanced Earth image',
+    to: 'the-most-recent-enhanced-earth-image'
+  },
+]
 
+const menuIcon = ref(GI_HAMBURGER_MENU);
 const isMobileNavOpen = ref(false);
+
+const router = useRouter();
+
+function closeMobileNav() {
+  const navEl = document.getElementsByTagName('nav')[0];
+  isMobileNavOpen.value = false;
+  menuIcon.value = GI_HAMBURGER_MENU;
+  navEl.classList.remove('visible');
+}
 
 function handleMenuButtonClick() {
   const navEl = document.getElementsByTagName('nav')[0];
   if (isMobileNavOpen.value) {
-    isMobileNavOpen.value = false;
-    menuIcon.value = GI_HAMBURGER_MENU;
-    navEl.classList.remove('visible');
+    closeMobileNav();
     return;
   }
 
@@ -21,6 +45,14 @@ function handleMenuButtonClick() {
   menuIcon.value = IO_CLOSE;
   navEl.classList.add('visible');
 }
+
+async function navigate(to: string) {
+  const navigationError = await router.push(to);
+  if (!navigationError) {
+    closeMobileNav();
+  }
+}
+
 </script>
 
 <template>
@@ -30,9 +62,14 @@ function handleMenuButtonClick() {
       Astronomy App
     </RouterLink>
     <nav>
-      <RouterLink to="astronomy-picture-of-the-day">Astronomy picture of the day</RouterLink>
-      <RouterLink to="current-location">Current location image</RouterLink>
-      <RouterLink to="the-most-recent-enhanced-earth-image">The most recent enhanced Earth image</RouterLink>
+      <span
+        v-for="route in routes"
+        :key="route.id"
+        class="nav_link"
+        @click.prevent="navigate(route.to)"
+      >
+       {{ route.name }}
+      </span>
     </nav>
     <span class="menu_icon_wrapper" @click.prevent="handleMenuButtonClick">
       <v-icon class="menu_icon" :name="menuIcon" scale="1.3"/>
@@ -73,17 +110,19 @@ function handleMenuButtonClick() {
     margin: 0 2em;
   }
 
-  a + a {
+  .nav_link + .nav_link {
     border-left: 1px solid;
     padding-left: 1em;
   }
 
-  nav a {
+  nav a, .nav_link {
+    color: white;
     opacity: .8;
   }
 
-  nav a:hover {
+  nav a:hover, .nav_link:hover {
     opacity: 1;
+    cursor: pointer;
   }
 
   .visible {
@@ -103,11 +142,11 @@ function handleMenuButtonClick() {
       z-index: 2;
     }
 
-    nav a {
+    .nav_link {
       color: black;
     }
 
-    a + a {
+    .nav_link + .nav_link {
       border: none;
       padding: 0;
     }

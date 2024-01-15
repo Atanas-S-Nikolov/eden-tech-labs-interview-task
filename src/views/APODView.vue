@@ -13,6 +13,6 @@ import PictureOfTheDay from '@/components/PictureOfTheDay.vue';
     display: grid;
     place-items: center;
     text-align: justify;
-    padding: 0 15em;
+    padding: 0 15%;
   }
 </style>
